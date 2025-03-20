@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog & Horse Adventure</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #1c1c1e;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(12px);
+            z-index: -1;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 600;
+            font-size: 2.5rem;
+            margin-top: 40px;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            margin: 40px auto 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+
+        .nav-buttons button {
+            background: #f2f2f7;
+            border: 1px solid #d1d1d6;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-buttons button:hover {
+            background: #e5e5ea;
+        }
+
+        .story {
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dog & Horse Adventure</h1>
+
+    <div class="slideshow-container">
+        <img class="slides" src="1.jpg" alt="Dog riding horse">
+        <img class="slides" src="2.jpg" alt="Dog sitting on horse">
+        <img class="slides" src="3.jpg" alt="Sunset road">
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="changeSlide(-1)">&#10094; Prev</button>
+        <button onclick="changeSlide(1)">Next &#10095;</button>
+    </div>
+
+    <div class="story">
+        <p>A brave dog and a loyal horse set off on an adventure together.</p>
+        <p>Through fields and meadows, their bond grew stronger with every mile.</p>
+        <p>At sunset, they found the perfect road leading to their next journey.</p>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
